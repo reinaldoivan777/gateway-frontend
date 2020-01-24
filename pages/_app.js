@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import App from 'next/app';
 import Head from 'next/head';
+import { Wrapper } from '../components/Wrapper';
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -24,7 +25,9 @@ class MyApp extends App {
           />
           <link href='https://fonts.googleapis.com/css?family=Poppins&display=swap' rel='stylesheet' />
         </Head>
-        <Component {...pageProps} />
+        <Wrapper>
+          <Component {...pageProps} />
+        </Wrapper>
       </Fragment>
     );
   }
