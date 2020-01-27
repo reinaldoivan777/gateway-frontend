@@ -11,10 +11,6 @@ const TrackingPage = () => (
       <link rel='icon' href='/favicon.ico' />
     </Head>
 
-    {/* <MainContainer>
-      <SidebarContainer />
-      <Tracking />
-    </MainContainer> */}
     <SidebarContainer />
     <Content>
       <Tracking />

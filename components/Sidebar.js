@@ -4,9 +4,10 @@ export const Sidebar = styled.div`
   width: 230px;
   color: #ffffff;
   background-color: #222d32;
+  overflow: auto;
   height: 100vh;
   margin-right: 16px;
-  padding-bottom: 16px;
+  padding: 16px 0;
   display: block;
   z-index: 801;
   float: left;
