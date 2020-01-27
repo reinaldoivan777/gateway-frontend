@@ -10,6 +10,7 @@ import {
   faReceipt,
   faCalendarAlt
 } from '@fortawesome/free-solid-svg-icons';
+import { Link } from '../routes';
 
 export class SidebarContainer extends Component {
   render() {
@@ -18,8 +19,12 @@ export class SidebarContainer extends Component {
         <SidebarMenu>
           <SidebarHeader>Gateway</SidebarHeader>
           <li>
-            <FontAwesomeIcon icon={faCompass} className='fa-fw mr-2' />
-            Track and Trace
+            <Link to='tracking'>
+              <a>
+                <FontAwesomeIcon icon={faCompass} className='fa-fw mr-2' />
+                Track and Trace
+              </a>
+            </Link>
           </li>
           <li>
             <FontAwesomeIcon icon={faCalendarAlt} className='fa-fw mr-2' />
