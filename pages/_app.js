@@ -1,7 +1,10 @@
 import React, { Fragment } from 'react';
 import App from 'next/app';
 import Head from 'next/head';
+import { Provider } from 'react-redux';
+import withRedux from 'next-redux-wrapper';
 import { Wrapper } from '../components/Wrapper';
+import { initStore } from '../redux/store';
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -13,7 +16,7 @@ class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, store } = this.props;
     return (
       <Fragment>
         <Head>
@@ -25,12 +28,14 @@ class MyApp extends App {
           />
           <link href='https://fonts.googleapis.com/css?family=Poppins&display=swap' rel='stylesheet' />
         </Head>
-        <Wrapper>
-          <Component {...pageProps} />
-        </Wrapper>
+        <Provider store={store}>
+          <Wrapper>
+            <Component {...pageProps} />
+          </Wrapper>
+        </Provider>
       </Fragment>
     );
   }
 }
 
-export default MyApp;
+export default withRedux(initStore, { debug: true })(MyApp);

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Card, Row, Col, Form, Button } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { login } from '../redux/actions/auth';
+import { Router } from '../routes';
 
 export class LoginContainer extends Component {
   constructor(props) {
@@ -19,12 +22,8 @@ export class LoginContainer extends Component {
     };
 
     try {
-      const response = await fetch('http://localhost:5000/v1/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
-      });
-      console.log(response);
+      const response = await this.props.login(body);
+      if (response.success) Router.push('/tracking');
     } catch (error) {
       console.error('You have an error in your code or there are Network issues.', error);
       throw new Error(error);
@@ -63,4 +62,4 @@ export class LoginContainer extends Component {
   }
 }
 
-export default LoginContainer;
+export default connect(null, { login })(LoginContainer);
