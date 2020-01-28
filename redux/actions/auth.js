@@ -2,7 +2,7 @@ import { setCookie, removeCookie } from '../../utils/cookie';
 import { Router } from '../../routes';
 
 export const login = body => async dispatch => {
-  const response = await fetch('http://localhost:5000/v1/login', {
+  const response = await fetch(`${process.env.BASE_URL}/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body)
