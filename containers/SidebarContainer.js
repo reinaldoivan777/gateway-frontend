@@ -12,57 +12,60 @@ import {
   faSignOutAlt
 } from '@fortawesome/free-solid-svg-icons';
 import { connect } from 'react-redux';
+import classNames from 'classnames';
 import { logout } from '../redux/actions/auth';
 import { Link } from '../routes';
 
 export class SidebarContainer extends Component {
   render() {
-    const { profile } = this.props;
+    const { profile, router } = this.props;
+    const { pathname } = router;
     const tipe = profile.tipe || 'import';
+    console.log(this.props);
 
     return (
       <Sidebar>
         <SidebarMenu>
           <SidebarHeader>Gateway</SidebarHeader>
-          <li>
+          <li className={pathname === '/tracking' ? 'active' : ''}>
             <Link to='tracking'>
               <a>
-                <FontAwesomeIcon icon={faCompass} className='fa-fw mr-3' />
+                <FontAwesomeIcon icon={faCompass} className='fa-fw mr-2' />
                 Track and Trace
               </a>
             </Link>
           </li>
           <li>
-            <FontAwesomeIcon icon={faCalendarAlt} className='fa-fw mr-3' />
+            <FontAwesomeIcon icon={faCalendarAlt} className='fa-fw mr-2' />
             Schedule
           </li>
           {tipe !== 'import' && (
             <React.Fragment>
               <li>
-                <FontAwesomeIcon icon={faReceipt} className='fa-fw mr-3' />
+                <FontAwesomeIcon icon={faReceipt} className='fa-fw mr-2' />
                 E-Quotation
               </li>
               <li>
-                <FontAwesomeIcon icon={faBook} className='fa-fw mr-3' />
+                <FontAwesomeIcon icon={faBook} className='fa-fw mr-2' />
                 E-Booking
               </li>
             </React.Fragment>
           )}
           <li>
-            <FontAwesomeIcon icon={faFileInvoice} className='fa-fw mr-3' />
+            <FontAwesomeIcon icon={faFileInvoice} className='fa-fw mr-2' />
             E-Invoice
           </li>
           <li>
-            <FontAwesomeIcon icon={faHistory} className='fa-fw mr-3' />
+            <FontAwesomeIcon icon={faHistory} className='fa-fw mr-2' />
             History
           </li>
           <li>
-            <FontAwesomeIcon icon={faUser} className='fa-fw mr-3' />
+            <FontAwesomeIcon icon={faUser} className='fa-fw mr-2' />
             Profile
           </li>
         </SidebarMenu>
         <SidebarLogout onClick={() => logout()}>
-          <FontAwesomeIcon icon={faSignOutAlt} className='fa-fw mr-3' />
+          <FontAwesomeIcon icon={faSignOutAlt} className='fa-fw mr-2' />
           Logout
         </SidebarLogout>
       </Sidebar>

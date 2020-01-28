@@ -5,47 +5,56 @@ import { connect } from 'react-redux';
 import { CardResultImport, CardResultExport } from '../components/CardResult';
 import { ContentTitle } from '../components/Content';
 import Loading from '../components/common/Loading';
+import DataNotFound from '../components/common/DataNotFound';
 
 export class Tracking extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mbl: '',
+      resi: '',
       result: null,
-      loading: false
+      loading: false,
+      notFound: false
     };
   }
 
   handleClick = async () => {
-    this.setState({ loading: true });
-    const { mbl } = this.state;
+    this.setState({ notFound: false, resi: '', loading: true });
+    const { resi } = this.state;
     const body = {
-      mbl_no: mbl
+      mbl_no: resi
     };
     const result = await tracking(body);
-    this.setState({
-      result,
-      loading: false,
-      mbl: ''
-    });
+    if (result.success) {
+      this.setState({
+        result,
+        loading: false
+      });
+    } else {
+      this.setState({
+        notFound: true,
+        loading: false
+      });
+    }
   };
 
   render() {
     const { profile } = this.props;
-    const { result, loading } = this.state;
+    const { result, loading, resi, notFound } = this.state;
     const tipe = profile.tipe || 'import';
     return (
       <Fragment>
         <ContentTitle>Track and Trace</ContentTitle>
         <Row>
           <Col xs='12' md='6'>
-            <Form.Group controlId='formMblNumber'>
+            <Form.Group controlId='formResiNumber'>
               <Form.Control
                 placeholder={tipe === 'import' ? 'Enter MBL Number' : 'Enter HBL Number'}
-                onChange={e => this.setState({ mbl: e.target.value })}
+                onChange={e => this.setState({ resi: e.target.value })}
+                value={resi}
               />
             </Form.Group>
-            <Button variant='primary' onClick={() => this.handleClick()}>
+            <Button variant='primary' disabled={!resi} onClick={() => this.handleClick()}>
               Search
             </Button>
           </Col>
@@ -56,6 +65,7 @@ export class Tracking extends Component {
             <Col>{tipe === 'import' ? <CardResultImport result={result} /> : <CardResultExport />}</Col>
           </Row>
         )}
+        {notFound && <DataNotFound />}
       </Fragment>
     );
   }

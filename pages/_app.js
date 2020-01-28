@@ -32,6 +32,8 @@ class MyApp extends App {
       const isPrivateRoute = pathname === '/tracking' || pathname === '/';
 
       if (isPrivateRoute) redirectUser(ctx, '/login');
+    } else {
+      if (pathname === '/') redirectUser(ctx, '/tracking');
     }
 
     return { pageProps };

@@ -38,14 +38,19 @@ export const SidebarMenu = styled.ul`
     }
   }
 
-  li active {
+  .active {
     border-left: 3px solid #6777ef;
-    color: #6777ef;
+    padding-left: 17px;
   }
 
   li,
   a {
     color: #868e96;
+  }
+
+  .active,
+  a {
+    color: #6777ef;
   }
 
   li,
