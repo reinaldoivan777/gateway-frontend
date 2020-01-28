@@ -4,6 +4,11 @@ import styled from 'styled-components';
 
 const Paragraph = styled.p`
   margin-bottom: 8px;
+  display: flex;
+`;
+
+const Label = styled.div`
+  width: 165px;
 `;
 
 export const CardResultImport = ({ result }) => {
@@ -13,22 +18,22 @@ export const CardResultImport = ({ result }) => {
     <Card>
       <Card.Body>
         <Paragraph>
-          <span className='text-muted'>MBL Number:</span> {tracking.mbl_no}
+          <Label className='text-muted'>MBL Number:</Label> {tracking.mbl_no}
         </Paragraph>
         <Paragraph>
-          <span className='text-muted'>Port of Destination:</span> {tracking.port_of_destination}{' '}
+          <Label className='text-muted'>Port of Destination:</Label> {tracking.port_of_destination}{' '}
         </Paragraph>
         <Paragraph>
-          <span className='text-muted'>Vessel:</span> {tracking.vessel}
+          <Label className='text-muted'>Vessel:</Label> {tracking.vessel}
         </Paragraph>
         <Paragraph>
-          <span className='text-muted'>ETD:</span> {tracking.etd}
+          <Label className='text-muted'>ETD:</Label> {tracking.etd}
         </Paragraph>
         <Paragraph>
-          <span className='text-muted'>ETA:</span> {tracking.eta}
+          <Label className='text-muted'>ETA:</Label> {tracking.eta}
         </Paragraph>
         <Paragraph>
-          <span className='text-muted'>Container Number:</span> {tracking.container_no}
+          <Label className='text-muted'>Container Number:</Label> {tracking.container_no}
         </Paragraph>
         <TableStatus status={tracking.status} />
       </Card.Body>
@@ -46,12 +51,12 @@ const TableStatus = ({ status }) => (
   <Table responsive striped bordered>
     <thead>
       <tr>
-        <td>#</td>
-        <td>HBL No.</td>
+        <td>No.</td>
+        <td>HBL</td>
         <td>Shipper</td>
         <td>Consignee</td>
         <td>Port of Origin</td>
-        <td>ATA</td>
+        <td>Actual Time of Arrival</td>
         <td>Pickup Do</td>
         <td>Pickup Cargo</td>
       </tr>

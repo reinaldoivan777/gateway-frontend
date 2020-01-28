@@ -3,38 +3,39 @@ import { tracking } from '../redux/actions/tracking';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { CardResultImport, CardResultExport } from '../components/CardResult';
+import { ContentTitle } from '../components/Content';
+import Loading from '../components/common/Loading';
 
 export class Tracking extends Component {
   constructor(props) {
     super(props);
     this.state = {
       mbl: '',
-      result: null
+      result: null,
+      loading: false
     };
   }
 
   handleClick = async () => {
+    this.setState({ loading: true });
     const { mbl } = this.state;
     const body = {
       mbl_no: mbl
     };
     const result = await tracking(body);
     this.setState({
-      result
+      result,
+      loading: false
     });
   };
 
   render() {
     const { profile } = this.props;
-    const { result } = this.state;
+    const { result, loading } = this.state;
     const tipe = profile.tipe || 'import';
     return (
       <Fragment>
-        <Row>
-          <Col xs='12' md='6'>
-            <h1>Tracking</h1>
-          </Col>
-        </Row>
+        <ContentTitle>Track and Trace</ContentTitle>
         <Row>
           <Col xs='12' md='6'>
             <Form.Group controlId='formMblNumber'>
@@ -45,6 +46,7 @@ export class Tracking extends Component {
             </Button>
           </Col>
         </Row>
+        {loading && <Loading />}
         {result && (
           <Row className='my-3'>
             <Col>{tipe === 'import' ? <CardResultImport result={result} /> : <CardResultExport />}</Col>
