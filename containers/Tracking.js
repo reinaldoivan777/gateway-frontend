@@ -19,7 +19,7 @@ export class Tracking extends Component {
   }
 
   handleClick = async () => {
-    this.setState({ notFound: false, resi: '', loading: true });
+    this.setState({ notFound: false, resi: '', loading: true, result: null });
     const { resi } = this.state;
     const body = {
       mbl_no: resi
