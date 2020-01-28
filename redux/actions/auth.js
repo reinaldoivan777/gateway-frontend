@@ -1,4 +1,5 @@
-import { setCookie } from '../../utils/cookie';
+import { setCookie, removeCookie } from '../../utils/cookie';
+import { Router } from '../../routes';
 
 export const login = body => async dispatch => {
   const response = await fetch('http://localhost:5000/v1/login', {
@@ -21,4 +22,9 @@ export const login = body => async dispatch => {
     });
 
   return response;
+};
+
+export const logout = () => {
+  removeCookie('token');
+  Router.push('/login');
 };

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Sidebar, SidebarMenu, SidebarHeader } from '../components/Sidebar';
+import { Sidebar, SidebarMenu, SidebarHeader, SidebarLogout } from '../components/Sidebar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCompass,
@@ -8,9 +8,11 @@ import {
   faFileInvoice,
   faBook,
   faReceipt,
-  faCalendarAlt
+  faCalendarAlt,
+  faSignOutAlt
 } from '@fortawesome/free-solid-svg-icons';
 import { connect } from 'react-redux';
+import { logout } from '../redux/actions/auth';
 import { Link } from '../routes';
 
 export class SidebarContainer extends Component {
@@ -59,6 +61,10 @@ export class SidebarContainer extends Component {
             Profile
           </li>
         </SidebarMenu>
+        <SidebarLogout onClick={() => logout()}>
+          <FontAwesomeIcon icon={faSignOutAlt} className='fa-fw mr-2' />
+          Logout
+        </SidebarLogout>
       </Sidebar>
     );
   }
