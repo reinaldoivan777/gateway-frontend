@@ -1,21 +1,26 @@
 import styled from 'styled-components';
 
 export const Sidebar = styled.div`
-  width: 230px;
-  color: #ffffff;
-  background-color: #222d32;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 250px;
+  background-color: #fff;
+  z-index: 880;
+  left: 0;
+  color: #868e96;
   overflow: auto;
-  height: 100vh;
-  margin-right: 16px;
-  padding: 16px 0;
-  display: block;
-  z-index: 801;
-  float: left;
 `;
 
 export const SidebarHeader = styled.h3`
-  padding: 10px 20px;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  height: 60px;
+  line-height: 60px;
   cursor: pointer;
+  color: black;
 `;
 
 export const SidebarMenu = styled.ul`
@@ -26,6 +31,7 @@ export const SidebarMenu = styled.ul`
   li {
     padding: 10px 20px;
     cursor: pointer;
+    color: #868e96;
 
     &:hover {
       opacity: 0.8;
@@ -34,16 +40,17 @@ export const SidebarMenu = styled.ul`
 
   li active {
     border-left: 3px solid #6777ef;
+    color: #6777ef;
   }
 
   li,
   a {
-    color: #ffffff;
+    color: #868e96;
   }
 
   li,
   a:hover {
-    color: #ffffff;
+    color: #868e96;
     text-decoration: none;
   }
 `;

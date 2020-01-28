@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
 export const Content = styled.div`
-  padding: 16px 0;
+  padding-left: 280px;
+  padding-right: 30px;
+  padding-top: 10px;
+  width: 100%;
+  position: relative;
+  overflow: auto;
 `;
