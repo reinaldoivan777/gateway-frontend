@@ -18,11 +18,4 @@ const TrackingPage = () => (
   </div>
 );
 
-// TrackingPage.getInitialProps = async context => {
-//   const { originalUrl } = context.req || {};
-//   console.log(context.req);
-
-//   return { originalUrl };
-// };
-
 export default TrackingPage;

@@ -14,7 +14,7 @@ export const login = body => async dispatch => {
 
       await dispatch({
         type: 'LOGIN',
-        payload: data.user
+        payload: data
       });
 
       return data;

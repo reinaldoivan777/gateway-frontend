@@ -1,9 +1,10 @@
 import cookie from 'js-cookie';
 
 export const setCookie = (key, value) => {
+  const inSixHours = new Date(new Date().getTime() + 360 * 60 * 1000);
   if (process.browser) {
     cookie.set(key, value, {
-      expires: 1,
+      expires: inSixHours,
       path: '/'
     });
   }
@@ -21,7 +22,7 @@ export const getCookie = (key, req) => {
   return process.browser ? getCookieFromBrowser(key) : getCookieFromServer(key, req);
 };
 
-const getCookieFromBrowser = key => {
+export const getCookieFromBrowser = key => {
   return cookie.get(key);
 };
 

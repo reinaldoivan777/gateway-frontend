@@ -5,13 +5,33 @@ import { Provider } from 'react-redux';
 import withRedux from 'next-redux-wrapper';
 import { Wrapper } from '../components/Wrapper';
 import { initStore } from '../redux/store';
+import { getCookie } from '../utils/cookie';
+import Router from 'next/router';
+
+export function redirectUser(ctx, location) {
+  if (ctx.req) {
+    ctx.res.writeHead(302, { Location: location });
+    ctx.res.end();
+  } else {
+    Router.push(location);
+  }
+}
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {};
+    const { pathname } = ctx;
+    const cookie = getCookie('token', ctx.req);
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
     }
+
+    if (!cookie) {
+      const isPrivateRoute = pathname === '/tracking' || pathname === '/';
+
+      if (isPrivateRoute) redirectUser(ctx, '/login');
+    }
+
     return { pageProps };
   }
 
@@ -27,6 +47,7 @@ class MyApp extends App {
             crossOrigin='anonymous'
           />
           <link href='https://fonts.googleapis.com/css?family=Poppins&display=swap' rel='stylesheet' />
+          <script src='https://storage.googleapis.com/studylink/libs/fontawesome-pro-5.3.1-web/js/all.min.js' />
         </Head>
         <Provider store={store}>
           <Wrapper>
@@ -38,4 +59,4 @@ class MyApp extends App {
   }
 }
 
-export default withRedux(initStore, { debug: true })(MyApp);
+export default withRedux(initStore)(MyApp);
