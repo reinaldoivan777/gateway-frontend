@@ -47,3 +47,15 @@ export const SidebarMenu = styled.ul`
     text-decoration: none;
   }
 `;
+
+export const SidebarLogout = styled.div`
+  position: absolute;
+  bottom: 16px;
+  width: 100%;
+  padding: 10px 20px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+`;
