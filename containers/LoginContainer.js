@@ -32,7 +32,7 @@ export class LoginContainer extends Component {
 
   render() {
     return (
-      <div className='container text-center my-5'>
+      <div className='container text-center mb-5' style={{ marginTop: '25vh' }}>
         <Row>
           <Col xs={12} md={{ offset: 4, span: 4 }}>
             <Card>

@@ -12,19 +12,22 @@ import {
   faSignOutAlt
 } from '@fortawesome/free-solid-svg-icons';
 import { connect } from 'react-redux';
+import classNames from 'classnames';
 import { logout } from '../redux/actions/auth';
 import { Link } from '../routes';
 
 export class SidebarContainer extends Component {
   render() {
-    const { profile } = this.props;
+    const { profile, router } = this.props;
+    const { pathname } = router;
     const tipe = profile.tipe || 'import';
+    console.log(this.props);
 
     return (
       <Sidebar>
         <SidebarMenu>
           <SidebarHeader>Gateway</SidebarHeader>
-          <li>
+          <li className={pathname === '/tracking' ? 'active' : ''}>
             <Link to='tracking'>
               <a>
                 <FontAwesomeIcon icon={faCompass} className='fa-fw mr-2' />

@@ -7,6 +7,8 @@ import { Wrapper } from '../components/Wrapper';
 import { initStore } from '../redux/store';
 import { getCookie } from '../utils/cookie';
 import Router from 'next/router';
+import { PersistGate } from 'redux-persist/integration/react';
+import '../styles/main.scss';
 
 export function redirectUser(ctx, location) {
   if (ctx.req) {
@@ -30,6 +32,8 @@ class MyApp extends App {
       const isPrivateRoute = pathname === '/tracking' || pathname === '/';
 
       if (isPrivateRoute) redirectUser(ctx, '/login');
+    } else {
+      if (pathname === '/') redirectUser(ctx, '/tracking');
     }
 
     return { pageProps };
@@ -46,13 +50,15 @@ class MyApp extends App {
             integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T'
             crossOrigin='anonymous'
           />
-          <link href='https://fonts.googleapis.com/css?family=Poppins&display=swap' rel='stylesheet' />
+          <link href='https://fonts.googleapis.com/css?family=Nunito&display=swap' rel='stylesheet' />
           <script src='https://storage.googleapis.com/studylink/libs/fontawesome-pro-5.3.1-web/js/all.min.js' />
         </Head>
         <Provider store={store}>
-          <Wrapper>
-            <Component {...pageProps} />
-          </Wrapper>
+          <PersistGate persistor={store.__PERSISTOR} loading={null}>
+            <Wrapper>
+              <Component {...pageProps} />
+            </Wrapper>
+          </PersistGate>
         </Provider>
       </Fragment>
     );
