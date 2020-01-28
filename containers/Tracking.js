@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { tracking } from '../redux/actions/tracking';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import TrackingPage from '../pages/tracking';
+import { CardResultImport, CardResultExport } from '../components/CardResult';
 
 export class Tracking extends Component {
   constructor(props) {
@@ -25,6 +25,9 @@ export class Tracking extends Component {
   };
 
   render() {
+    const { profile } = this.props;
+    const { result } = this.state;
+    const tipe = profile.tipe || 'import';
     return (
       <Fragment>
         <Row>
@@ -42,6 +45,11 @@ export class Tracking extends Component {
             </Button>
           </Col>
         </Row>
+        {result && (
+          <Row className='my-3'>
+            <Col>{tipe === 'import' ? <CardResultImport result={result} /> : <CardResultExport />}</Col>
+          </Row>
+        )}
       </Fragment>
     );
   }

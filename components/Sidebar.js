@@ -33,7 +33,7 @@ export const SidebarMenu = styled.ul`
   }
 
   li active {
-    border-left: 3px solid blue;
+    border-left: 3px solid #6777ef;
   }
 
   li,
