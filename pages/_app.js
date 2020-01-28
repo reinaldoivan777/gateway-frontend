@@ -7,6 +7,7 @@ import { Wrapper } from '../components/Wrapper';
 import { initStore } from '../redux/store';
 import { getCookie } from '../utils/cookie';
 import Router from 'next/router';
+import { PersistGate } from 'redux-persist/integration/react';
 
 export function redirectUser(ctx, location) {
   if (ctx.req) {
@@ -50,9 +51,11 @@ class MyApp extends App {
           <script src='https://storage.googleapis.com/studylink/libs/fontawesome-pro-5.3.1-web/js/all.min.js' />
         </Head>
         <Provider store={store}>
-          <Wrapper>
-            <Component {...pageProps} />
-          </Wrapper>
+          <PersistGate persistor={store.__PERSISTOR} loading={null}>
+            <Wrapper>
+              <Component {...pageProps} />
+            </Wrapper>
+          </PersistGate>
         </Provider>
       </Fragment>
     );
