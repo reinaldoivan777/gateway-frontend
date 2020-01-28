@@ -31,4 +31,19 @@ export const SidebarMenu = styled.ul`
       opacity: 0.8;
     }
   }
+
+  li active {
+    border-left: 3px solid blue;
+  }
+
+  li,
+  a {
+    color: #ffffff;
+  }
+
+  li,
+  a:hover {
+    color: #ffffff;
+    text-decoration: none;
+  }
 `;

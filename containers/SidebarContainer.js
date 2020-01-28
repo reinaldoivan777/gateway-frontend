@@ -10,29 +10,42 @@ import {
   faReceipt,
   faCalendarAlt
 } from '@fortawesome/free-solid-svg-icons';
+import { connect } from 'react-redux';
+import { Link } from '../routes';
 
 export class SidebarContainer extends Component {
   render() {
+    const { profile } = this.props;
+    const tipe = profile.tipe || 'import';
+
     return (
       <Sidebar>
         <SidebarMenu>
           <SidebarHeader>Gateway</SidebarHeader>
           <li>
-            <FontAwesomeIcon icon={faCompass} className='fa-fw mr-2' />
-            Track and Trace
+            <Link to='tracking'>
+              <a>
+                <FontAwesomeIcon icon={faCompass} className='fa-fw mr-2' />
+                Track and Trace
+              </a>
+            </Link>
           </li>
           <li>
             <FontAwesomeIcon icon={faCalendarAlt} className='fa-fw mr-2' />
             Schedule
           </li>
-          <li>
-            <FontAwesomeIcon icon={faReceipt} className='fa-fw mr-2' />
-            E-Quotation
-          </li>
-          <li>
-            <FontAwesomeIcon icon={faBook} className='fa-fw mr-2' />
-            E-Booking
-          </li>
+          {tipe !== 'import' && (
+            <React.Fragment>
+              <li>
+                <FontAwesomeIcon icon={faReceipt} className='fa-fw mr-2' />
+                E-Quotation
+              </li>
+              <li>
+                <FontAwesomeIcon icon={faBook} className='fa-fw mr-2' />
+                E-Booking
+              </li>
+            </React.Fragment>
+          )}
           <li>
             <FontAwesomeIcon icon={faFileInvoice} className='fa-fw mr-2' />
             E-Invoice
@@ -51,4 +64,8 @@ export class SidebarContainer extends Component {
   }
 }
 
-export default SidebarContainer;
+const mapStateToProps = state => ({
+  profile: state.user.profile
+});
+
+export default connect(mapStateToProps)(SidebarContainer);
