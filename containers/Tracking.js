@@ -18,7 +18,8 @@ export class Tracking extends Component {
     };
   }
 
-  handleClick = async () => {
+  searchResi = async event => {
+    event.preventDefault();
     this.setState({ notFound: false, resi: '', loading: true, result: null });
     const { resi } = this.state;
     const body = {
@@ -47,16 +48,18 @@ export class Tracking extends Component {
         <ContentTitle>Track and Trace</ContentTitle>
         <Row>
           <Col xs='12' md='6'>
-            <Form.Group controlId='formResiNumber'>
-              <Form.Control
-                placeholder={tipe === 'import' ? 'Enter MBL Number' : 'Enter HBL Number'}
-                onChange={e => this.setState({ resi: e.target.value })}
-                value={resi}
-              />
-            </Form.Group>
-            <Button variant='primary' disabled={!resi} onClick={() => this.handleClick()}>
-              Search
-            </Button>
+            <Form onSubmit={e => this.searchResi(e)}>
+              <Form.Group controlId='formResiNumber'>
+                <Form.Control
+                  placeholder={tipe === 'import' ? 'Enter MBL Number' : 'Enter HBL Number'}
+                  onChange={e => this.setState({ resi: e.target.value })}
+                  value={resi}
+                />
+              </Form.Group>
+              <Button variant='primary' type='submit' disabled={!resi}>
+                Search
+              </Button>
+            </Form>
           </Col>
         </Row>
         {loading && <Loading />}
