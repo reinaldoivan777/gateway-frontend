@@ -25,7 +25,8 @@ export class Tracking extends Component {
     const result = await tracking(body);
     this.setState({
       result,
-      loading: false
+      loading: false,
+      mbl: ''
     });
   };
 
@@ -39,7 +40,10 @@ export class Tracking extends Component {
         <Row>
           <Col xs='12' md='6'>
             <Form.Group controlId='formMblNumber'>
-              <Form.Control placeholder='Enter MBL Number' onChange={e => this.setState({ mbl: e.target.value })} />
+              <Form.Control
+                placeholder={tipe === 'import' ? 'Enter MBL Number' : 'Enter HBL Number'}
+                onChange={e => this.setState({ mbl: e.target.value })}
+              />
             </Form.Group>
             <Button variant='primary' onClick={() => this.handleClick()}>
               Search

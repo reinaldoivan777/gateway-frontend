@@ -35,7 +35,7 @@ export const CardResultImport = ({ result }) => {
         <Paragraph>
           <Label className='text-muted'>Container Number:</Label> {tracking.container_no}
         </Paragraph>
-        <TableStatus status={tracking.status} />
+        <TableStatusImport status={tracking.status} />
       </Card.Body>
     </Card>
   );
@@ -47,7 +47,7 @@ export const CardResultExport = () => (
   </Card>
 );
 
-const TableStatus = ({ status }) => (
+const TableStatusImport = ({ status }) => (
   <Table responsive striped bordered>
     <thead>
       <tr>
