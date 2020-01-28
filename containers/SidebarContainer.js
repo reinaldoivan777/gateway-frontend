@@ -21,7 +21,6 @@ export class SidebarContainer extends Component {
     const { profile, router } = this.props;
     const { pathname } = router;
     const tipe = profile.tipe || 'import';
-    console.log(this.props);
 
     return (
       <Sidebar>

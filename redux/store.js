@@ -4,7 +4,7 @@ import reducer from './reducers';
 import { persistStore, persistReducer } from 'redux-persist';
 import { createLogger } from 'redux-logger';
 
-const dev = process.env.NODE_ENV !== 'production';
+const dev = process.env.ENV !== 'production';
 
 export const initStore = initialState => {
   let store;

@@ -12,7 +12,8 @@ module.exports = withFonts(
         localIdentName: '[local]___[hash:base64:5]'
       },
       env: {
-        BASE_URL: process.env.BASE_URL
+        BASE_URL: process.env.BASE_URL,
+        ENV: process.env.ENV
       }
     })
   )

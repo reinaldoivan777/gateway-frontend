@@ -13,7 +13,6 @@ const Label = styled.div`
 
 export const CardResultImport = ({ result }) => {
   const { tracking } = result;
-  console.log(result);
   return (
     <Card>
       <Card.Body>
