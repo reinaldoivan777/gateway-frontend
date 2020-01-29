@@ -9,7 +9,7 @@ const dev = process.env.ENV !== 'production';
 export const initStore = initialState => {
   let store;
   const isClient = typeof window !== 'undefined';
-  const middlewares = dev ? [thunk, createLogger()] : [];
+  const middlewares = dev ? [thunk, createLogger()] : [thunk];
   if (isClient) {
     const storage = require('redux-persist/lib/storage').default;
     const persistConfig = {
