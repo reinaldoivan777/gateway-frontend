@@ -21,10 +21,20 @@ export class Tracking extends Component {
   searchResi = async event => {
     event.preventDefault();
     this.setState({ notFound: false, resi: '', loading: true, result: null });
+    const { profile } = this.props;
+    const tipe = profile.tipe || 'import';
     const { resi } = this.state;
-    const body = {
-      mbl_no: resi
-    };
+    let body;
+
+    if (tipe === 'import') {
+      body = {
+        mbl_no: resi
+      };
+    } else {
+      body = {
+        hbl_no: resi
+      };
+    }
     const result = await tracking(body);
     if (result.success) {
       this.setState({
@@ -43,6 +53,7 @@ export class Tracking extends Component {
     const { profile } = this.props;
     const { result, loading, resi, notFound } = this.state;
     const tipe = profile.tipe || 'import';
+    console.log(result);
     return (
       <Fragment>
         <ContentTitle>Track and Trace</ContentTitle>
@@ -65,7 +76,7 @@ export class Tracking extends Component {
         {loading && <Loading />}
         {result && (
           <Row className='my-3'>
-            <Col>{tipe === 'import' ? <CardResultImport result={result} /> : <CardResultExport />}</Col>
+            <Col>{tipe === 'import' ? <CardResultImport result={result} /> : <CardResultExport result={result} />}</Col>
           </Row>
         )}
         {notFound && <DataNotFound />}
