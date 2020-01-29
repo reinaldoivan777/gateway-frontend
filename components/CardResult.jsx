@@ -2,13 +2,17 @@ import React from 'react';
 import { Card, Table } from 'react-bootstrap';
 import styled from 'styled-components';
 
-const Paragraph = styled.p`
+const Paragraph = styled.div`
   margin-bottom: 8px;
   display: flex;
 `;
 
 const Label = styled.div`
-  width: 165px;
+  width: 18%;
+`;
+
+const Data = styled.div`
+  width: 78%;
 `;
 
 export const CardResultImport = ({ result }) => {
@@ -17,22 +21,22 @@ export const CardResultImport = ({ result }) => {
     <Card>
       <Card.Body>
         <Paragraph>
-          <Label className='text-muted'>MBL Number:</Label> {tracking.mbl_no}
+          <Label className='text-muted'>MBL Number:</Label> <Data>{tracking.mbl_no}</Data>
         </Paragraph>
         <Paragraph>
-          <Label className='text-muted'>Port of Destination:</Label> {tracking.port_of_destination}{' '}
+          <Label className='text-muted'>Port of Destination:</Label> <Data>{tracking.port_of_destination}</Data>
         </Paragraph>
         <Paragraph>
-          <Label className='text-muted'>Vessel:</Label> {tracking.vessel}
+          <Label className='text-muted'>Vessel:</Label> <Data>{tracking.vessel}</Data>
         </Paragraph>
         <Paragraph>
-          <Label className='text-muted'>ETD:</Label> {tracking.etd}
+          <Label className='text-muted'>ETD:</Label> <Data>{tracking.etd}</Data>
         </Paragraph>
         <Paragraph>
-          <Label className='text-muted'>ETA:</Label> {tracking.eta}
+          <Label className='text-muted'>ETA:</Label> <Data>{tracking.eta}</Data>
         </Paragraph>
         <Paragraph>
-          <Label className='text-muted'>Container Number:</Label> {tracking.container_no}
+          <Label className='text-muted'>Container Number:</Label> <Data>{tracking.container_no}</Data>
         </Paragraph>
         <TableStatusImport status={tracking.status} />
       </Card.Body>
@@ -40,11 +44,34 @@ export const CardResultImport = ({ result }) => {
   );
 };
 
-export const CardResultExport = () => (
-  <Card>
-    <h1>Import</h1>
-  </Card>
-);
+export const CardResultExport = ({ result }) => {
+  const { tracking } = result;
+  return (
+    <Card>
+      <Card.Body>
+        <Paragraph>
+          <Label className='text-muted'>HBL Number:</Label> <Data>{tracking.hbl_no}</Data>
+        </Paragraph>
+        <Paragraph>
+          <Label className='text-muted'>Shipper:</Label> <Data>{tracking.shipper}</Data>
+        </Paragraph>
+        <Paragraph>
+          <Label className='text-muted'>Consignee:</Label> <Data>{tracking.consignee}</Data>
+        </Paragraph>
+        <Paragraph>
+          <Label className='text-muted'>ETD:</Label> <Data>{tracking.etd}</Data>
+        </Paragraph>
+        <Paragraph>
+          <Label className='text-muted'>ETA:</Label> <Data>{tracking.eta}</Data>
+        </Paragraph>
+        <Paragraph>
+          <Label className='text-muted'>Vessel:</Label> <Data>{tracking.vessel}</Data>
+        </Paragraph>
+        <TableStatusExport status={tracking.status} />
+      </Card.Body>
+    </Card>
+  );
+};
 
 const TableStatusImport = ({ status }) => (
   <Table responsive striped bordered>
@@ -73,6 +100,33 @@ const TableStatusImport = ({ status }) => (
           <td>{data[6].pickup_cargo}</td>
         </tr>
       ))}
+    </tbody>
+  </Table>
+);
+
+const TableStatusExport = ({ status }) => (
+  <Table responsive striped bordered>
+    <thead>
+      <tr>
+        <td>Pickup Cargo</td>
+        <td>ATD</td>
+        <td>AOT</td>
+        <td>DPT</td>
+        <td>ATD</td>
+        <td>Pickup Do</td>
+        <td>Cargo Delivery</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{status[0].pickup_cargo}</td>
+        <td>{status[1].atd}</td>
+        <td>{status[2].aot}</td>
+        <td>{status[3].dpt}</td>
+        <td>{status[4].atd}</td>
+        <td>{status[5].pickup_do}</td>
+        <td>{status[6].cargo_delivery}</td>
+      </tr>
     </tbody>
   </Table>
 );
