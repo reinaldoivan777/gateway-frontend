@@ -53,7 +53,6 @@ export class Tracking extends Component {
     const { profile } = this.props;
     const { result, loading, resi, notFound } = this.state;
     const tipe = profile.tipe || 'import';
-    console.log(result);
     return (
       <Fragment>
         <ContentTitle>Track and Trace</ContentTitle>
