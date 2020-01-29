@@ -9,6 +9,7 @@ import { getCookie } from '../utils/cookie';
 import Router from 'next/router';
 import { PersistGate } from 'redux-persist/integration/react';
 import '../styles/main.scss';
+import '@fortawesome/fontawesome-svg-core/styles.css';
 
 export function redirectUser(ctx, location) {
   if (ctx.req) {
@@ -51,7 +52,12 @@ class MyApp extends App {
             crossOrigin='anonymous'
           />
           <link href='https://fonts.googleapis.com/css?family=Nunito&display=swap' rel='stylesheet' />
-          <script src='https://storage.googleapis.com/studylink/libs/fontawesome-pro-5.3.1-web/js/all.min.js' />
+          <link
+            href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
+            rel='stylesheet'
+            integrity='sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN'
+            crossorigin='anonymous'
+          />
         </Head>
         <Provider store={store}>
           <PersistGate persistor={store.__PERSISTOR} loading={null}>
