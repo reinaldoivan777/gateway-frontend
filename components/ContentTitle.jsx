@@ -25,16 +25,17 @@ const Layout = styled.div`
   font-weight: 600;
 `;
 
-const BarsIcon = styled(FontAwesomeIcon)`
-  cursor: pointer;
-`;
-
 export class ContentTitle extends Component {
   render() {
     const { title, miniSidebar } = this.props;
     return (
       <Layout>
-        <BarsIcon icon={faBars} className='mr-3' onClick={() => this.props.minimizeSidebar(!miniSidebar)} />
+        <FontAwesomeIcon
+          icon={faBars}
+          className='mr-3'
+          style={{ cursor: 'pointer' }}
+          onClick={() => this.props.minimizeSidebar(!miniSidebar)}
+        />
         {title}
       </Layout>
     );
