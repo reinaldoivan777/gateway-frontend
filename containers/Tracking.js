@@ -3,7 +3,7 @@ import { tracking } from '../redux/actions/tracking';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { CardResultImport, CardResultExport } from '../components/CardResult';
-import { ContentTitle } from '../components/Content';
+import ContentTitle from '../components/ContentTitle';
 import Loading from '../components/common/Loading';
 import DataNotFound from '../components/common/DataNotFound';
 
@@ -55,7 +55,7 @@ export class Tracking extends Component {
     const tipe = profile.tipe || 'import';
     return (
       <Fragment>
-        <ContentTitle>Track and Trace</ContentTitle>
+        <ContentTitle title='Track and Trace' />
         <Row>
           <Col xs='12' md='6'>
             <Form onSubmit={e => this.searchResi(e)}>
