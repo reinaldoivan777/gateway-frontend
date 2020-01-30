@@ -5,12 +5,13 @@ export const Sidebar = styled.div`
   position: fixed;
   top: 0;
   height: 100%;
-  width: 250px;
+  width: ${props => (!props.miniSidebar ? '250px' : '60px')};
   background-color: #fff;
   z-index: 880;
   left: 0;
   color: #868e96;
   overflow: auto;
+  transition: width 1s;
 `;
 
 export const SidebarHeader = styled.h3`

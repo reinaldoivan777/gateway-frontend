@@ -1,3 +1,4 @@
 export const initialState = {
-  profile: {}
+  profile: {},
+  miniSidebar: false
 };
