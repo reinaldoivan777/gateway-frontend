@@ -34,7 +34,7 @@ class MyApp extends App {
 
       if (isPrivateRoute) redirectUser(ctx, '/login');
     } else {
-      if (pathname === '/') redirectUser(ctx, '/tracking');
+      if (pathname === '/' || pathname === '/login') redirectUser(ctx, '/tracking');
     }
 
     return { pageProps };
