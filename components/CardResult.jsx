@@ -108,23 +108,45 @@ const TableStatusExport = ({ status }) => (
   <Table responsive striped bordered>
     <thead>
       <tr>
-        <td>Pickup Cargo</td>
-        <td>ATD</td>
-        <td>AOT</td>
-        <td>DPT</td>
-        <td>ATD</td>
-        <td>Pickup Do</td>
-        <td>Cargo Delivery</td>
+        <td>No.</td>
+        <td>Status</td>
+        <td>Date</td>
       </tr>
     </thead>
     <tbody>
       <tr>
+        <td>1</td>
+        <td>Pickup Cargo</td>
         <td>{status[0].pickup_cargo}</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>ATD</td>
         <td>{status[1].atd}</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>AOT</td>
         <td>{status[2].aot}</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>DPT</td>
         <td>{status[3].dpt}</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>ATD</td>
         <td>{status[4].atd}</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Pickup Do</td>
         <td>{status[5].pickup_do}</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>Cargo Delivery</td>
         <td>{status[6].cargo_delivery}</td>
       </tr>
     </tbody>
