@@ -121,22 +121,22 @@ const TableStatusExport = ({ status }) => (
       </tr>
       <tr>
         <td>2</td>
-        <td>ATD</td>
+        <td>Departure from Port of Loading</td>
         <td>{status[1].atd}</td>
       </tr>
       <tr>
         <td>3</td>
-        <td>AOT</td>
+        <td>Arrival at Transhipment Port</td>
         <td>{status[2].aot}</td>
       </tr>
       <tr>
         <td>4</td>
-        <td>DPT</td>
+        <td>Departure from Transhipment Port</td>
         <td>{status[3].dpt}</td>
       </tr>
       <tr>
         <td>5</td>
-        <td>ATD</td>
+        <td>Arrival from Transhipment Port</td>
         <td>{status[4].atd}</td>
       </tr>
       <tr>
