@@ -8,11 +8,11 @@ const Paragraph = styled.div`
 `;
 
 const Label = styled.div`
-  width: 18%;
+  width: 20%;
 `;
 
 const Data = styled.div`
-  width: 78%;
+  width: 77%;
 `;
 
 export const CardResultImport = ({ result }) => {
@@ -30,10 +30,10 @@ export const CardResultImport = ({ result }) => {
           <Label className='text-muted'>Vessel:</Label> <Data>{tracking.vessel}</Data>
         </Paragraph>
         <Paragraph>
-          <Label className='text-muted'>ETD:</Label> <Data>{tracking.etd}</Data>
+          <Label className='text-muted'>Estimated Time Departed:</Label> <Data>{tracking.etd}</Data>
         </Paragraph>
         <Paragraph>
-          <Label className='text-muted'>ETA:</Label> <Data>{tracking.eta}</Data>
+          <Label className='text-muted'>Estimated Time Arrived:</Label> <Data>{tracking.eta}</Data>
         </Paragraph>
         <Paragraph>
           <Label className='text-muted'>Container Number:</Label> <Data>{tracking.container_no}</Data>
@@ -59,10 +59,10 @@ export const CardResultExport = ({ result }) => {
           <Label className='text-muted'>Consignee:</Label> <Data>{tracking.consignee}</Data>
         </Paragraph>
         <Paragraph>
-          <Label className='text-muted'>ETD:</Label> <Data>{tracking.etd}</Data>
+          <Label className='text-muted'>Estimated Time Departed:</Label> <Data>{tracking.etd}</Data>
         </Paragraph>
         <Paragraph>
-          <Label className='text-muted'>ETA:</Label> <Data>{tracking.eta}</Data>
+          <Label className='text-muted'>Estimated Time Arrived:</Label> <Data>{tracking.eta}</Data>
         </Paragraph>
         <Paragraph>
           <Label className='text-muted'>Vessel:</Label> <Data>{tracking.vessel}</Data>
