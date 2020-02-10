@@ -8,7 +8,9 @@
     "@zeit/next-sass": "^1.0.1",
     "bootstrap": "^4.4.1",
     "classnames": "^2.2.6",
+    "cross-env": "^7.0.0",
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "js-cookie": "^2.2.1",
     "next": "^9.2.0",
     "next-fonts": "^1.0.3",
@@ -29,7 +31,7 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "next start -p 8000"
+    "start": "cross-env NODE_ENV=production PORT=8000 node server.js"
   },
   "devDependencies": {
     "@babel/node": "^7.8.3",
