@@ -15,6 +15,21 @@ const Data = styled.div`
   width: 77%;
 `;
 
+const abbreviation = text => {
+  switch (text) {
+    case 'ATD':
+      return 'Departure from Port of Loading';
+    case 'AOT':
+      return 'Arrival at Transhipment Port';
+    case 'DTP':
+      return 'Departure from Transhipment Port';
+    case 'ATA':
+      return 'Arrival at Port of Discharging';
+    default:
+      return text;
+  }
+};
+
 export const CardResultImport = ({ result }) => {
   const { tracking } = result;
   return (
@@ -123,7 +138,7 @@ const TableStatusExport = ({ status }) => {
                 <tbody>
                   {Object.keys(dataParsed).map(key => (
                     <tr key={key}>
-                      <td>{key}</td>
+                      <td>{abbreviation(key)}</td>
                       <td>{dataParsed[key]}</td>
                     </tr>
                   ))}
