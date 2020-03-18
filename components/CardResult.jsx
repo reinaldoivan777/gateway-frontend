@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Card, Table } from 'react-bootstrap';
 import styled from 'styled-components';
 
@@ -104,51 +104,70 @@ const TableStatusImport = ({ status }) => (
   </Table>
 );
 
-const TableStatusExport = ({ status }) => (
-  <Table responsive striped bordered>
-    <thead>
-      <tr>
-        <td>No.</td>
-        <td>Status</td>
-        <td>Date</td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>Pickup Cargo</td>
-        <td>{status[0].pickup_cargo}</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Departure from Port of Loading</td>
-        <td>{status[1].atd}</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Arrival at Transhipment Port</td>
-        <td>{status[2].aot}</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>Departure from Transhipment Port</td>
-        <td>{status[3].dpt}</td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td>Arrival from Transhipment Port</td>
-        <td>{status[4].atd}</td>
-      </tr>
-      <tr>
-        <td>6</td>
-        <td>Pickup Do</td>
-        <td>{status[5].pickup_do}</td>
-      </tr>
-      <tr>
-        <td>7</td>
-        <td>Cargo Delivery</td>
-        <td>{status[6].cargo_delivery}</td>
-      </tr>
-    </tbody>
-  </Table>
-);
+const TableStatusExport = ({ status }) => {
+  return (
+    <Table responsive striped bordered>
+      <thead>
+        <tr>
+          <td>No.</td>
+          <td>Status</td>
+        </tr>
+      </thead>
+      <tbody>
+        {status.map((data, index) => {
+          const dataParsed = JSON.parse(data);
+          return (
+            <tr key={index + 1}>
+              <td>{index + 1}</td>
+              <Table>
+                <tbody>
+                  {Object.keys(dataParsed).map(key => (
+                    <tr key={key}>
+                      <td>{key}</td>
+                      <td>{dataParsed[key]}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            </tr>
+          );
+        })}
+        {/* <tr>
+          <td>1</td>
+          <td>Pickup Cargo</td>
+          <td>{status[0].pickup_cargo}</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Departure from Port of Loading</td>
+          <td>{status[1].atd}</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Arrival at Transhipment Port</td>
+          <td>{status[2].aot}</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Departure from Transhipment Port</td>
+          <td>{status[3].dpt}</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Arrival from Transhipment Port</td>
+          <td>{status[4].atd}</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Pickup Do</td>
+          <td>{status[5].pickup_do}</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Cargo Delivery</td>
+          <td>{status[6].cargo_delivery}</td>
+        </tr> */}
+      </tbody>
+    </Table>
+  );
+};
