@@ -138,7 +138,7 @@ const TableStatusExport = ({ status }) => {
                 <tbody>
                   {Object.keys(dataParsed).map(key => (
                     <tr key={key}>
-                      <td>{abbreviation(key)}</td>
+                      <td style={{ width: '50%' }}>{abbreviation(key)}</td>
                       <td>{dataParsed[key]}</td>
                     </tr>
                   ))}
@@ -147,41 +147,6 @@ const TableStatusExport = ({ status }) => {
             </tr>
           );
         })}
-        {/* <tr>
-          <td>1</td>
-          <td>Pickup Cargo</td>
-          <td>{status[0].pickup_cargo}</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Departure from Port of Loading</td>
-          <td>{status[1].atd}</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Arrival at Transhipment Port</td>
-          <td>{status[2].aot}</td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>Departure from Transhipment Port</td>
-          <td>{status[3].dpt}</td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>Arrival from Transhipment Port</td>
-          <td>{status[4].atd}</td>
-        </tr>
-        <tr>
-          <td>6</td>
-          <td>Pickup Do</td>
-          <td>{status[5].pickup_do}</td>
-        </tr>
-        <tr>
-          <td>7</td>
-          <td>Cargo Delivery</td>
-          <td>{status[6].cargo_delivery}</td>
-        </tr> */}
       </tbody>
     </Table>
   );
